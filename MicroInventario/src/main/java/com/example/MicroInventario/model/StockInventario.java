@@ -34,4 +34,8 @@ public class StockInventario {
 
     @Column(name="stock_min")
     private int stock_min;
+
+    @Column(name = "estado", nullable = false)
+    private boolean estado;
+
 }
