@@ -8,38 +8,38 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 public class TiendaDTO {
+
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Request {
-        
-        @NotBlank(message = "El nombre de la tienda es obligatorio")
-        @Size(max = 100, message = "El nombre no puede superar los 100 caracteres")
+
+        @NotBlank(message = "El nombre es obligatorio")
+        @Size(min = 3, max = 100, message = "El nombre debe tener entre 3 y 100 caracteres")
         private String nombre;
-        
-        @NotBlank(message = "La dirección es obligatoria")
+
+        @NotBlank(message = "La direccion es obligatoria")
+        @Size(min = 5, max = 150, message = "La direccion debe tener entre 5 y 150 caracteres")
         private String direccion;
-        
+
         @NotNull(message = "La comuna es obligatoria")
-        private Integer id_comuna;
-        
-        @NotNull(message = "La región es obligatoria")
-        private Integer id_region;
+        private int id_comuna;
+
+        @NotNull(message = "La region es obligatoria")
+        private int id_region;
+
+    
     }
 
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Response {
+
         private int id_tienda;
         private String nombre;
         private String direccion;
-        
-        // Transformamos los IDs en datos legibles para la respuesta
         private int id_comuna;
-        private String nombre_comuna;
-        
         private int id_region;
-        private String nombre_region;
     }
 }

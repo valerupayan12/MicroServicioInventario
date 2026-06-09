@@ -1,48 +1,17 @@
 package com.example.MicroInventario.service;
 
+import com.example.MicroInventario.dto.TiendaDTO;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+public interface TiendaService {
 
-import com.example.MicroInventario.model.Tienda;
-import com.example.MicroInventario.repository.TiendaRepository;
+    List<TiendaDTO.Response> listar();
 
-import jakarta.transaction.Transactional;
-@Transactional
-@Service
-public class TiendaService {
-     @Autowired
-    private TiendaRepository tiendaRepository;
-    //obtener
-    public List<Tienda> getTiendas(){
-        return tiendaRepository.obtenerTienda();
-    }
-    //bucar
-    public Tienda getTienda(int id_tienda){
-        Tienda tienda = tiendaRepository.buscarTienda(id_tienda);
-        if (tienda!=null) {
-            return tienda;
-        }else
-        return new Tienda();
-    }
-    //eliminar
-    public int deleteTienda(int id_tienda){
-        tiendaRepository.deleteById(id_tienda);
-        return 1;
-    }
-    //buardar
-    public Tienda saveTienda(Tienda tienda){
-        return tiendaRepository.save(tienda);
-    }
-    //modificar
-    public Tienda updateTienda(int id_tienda, Tienda tienda){
-        Tienda tiendaExistente = getTienda(id_tienda);
-        if (tiendaExistente != null && tiendaExistente.getId_tienda() != 0) {
-            tienda.setId_tienda(id_tienda);
-            return tiendaRepository.save(tienda);
-        }
-        return null;
-    }
+    TiendaDTO.Response buscarPorId(int id);
 
+    TiendaDTO.Response guardar(TiendaDTO.Request request);
+
+    TiendaDTO.Response actualizar(int id, TiendaDTO.Request request);
+
+    void eliminar(int id);
 }

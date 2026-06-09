@@ -3,53 +3,66 @@ package com.example.MicroInventario.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.example.MicroInventario.model.Tienda;
+import com.example.MicroInventario.dto.TiendaDTO;
 import com.example.MicroInventario.service.TiendaService;
 
-import jakarta.validation.Valid;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 
-@SuppressWarnings("unused")
 @RestController
-@RequestMapping("/api/v1/tiendas")
+@RequestMapping("api/v1/tiendas")
+@Tag(name = "Tiendas", description = "Operaciones relacionadas con tiendas")
+@RequiredArgsConstructor
 public class TiendaController {
-     @Autowired
+
+    @Autowired
     private TiendaService tiendaService;
 
+    // LISTAR
     @GetMapping
-    public List<Tienda> listarTiendas(){
-        return tiendaService.getTiendas();
-    }
-    //agregar
-    @PostMapping
-    public Tienda agregarTienda(@Valid @RequestBody Tienda tienda){
-        return tiendaService.saveTienda(tienda);
-     }
-    //buscar
-        @GetMapping("/{id_tienda}")
-        public Tienda buscarTienda(@PathVariable int id_tienda){
-            return tiendaService.getTienda(id_tienda);
-        }
-    //actualizar
-    @PutMapping("/{id_tienda}")
-    public Tienda actualizarTienda(@PathVariable int id_tienda, @Valid @RequestBody Tienda tienda){
-        return tiendaService.updateTienda(id_tienda, tienda);
-    }
-    //eliminar
-    @DeleteMapping("/{id_tienda}")
-    public String eliminarTienda(@PathVariable int id_tienda){
-        if (tiendaService.deleteTienda(id_tienda) == 1) {
-            return "Tienda eliminada correctamente";
-        }
-        return "Error al eliminar la tienda";
+    @Operation(summary = "Obtener Tiendas", description = "Obtiene lista de tiendas")
+    public List<TiendaDTO.Response> listarTiendas() {
+
+        return tiendaService.listar();
     }
 
+    // BUSCAR POR ID
+    @GetMapping("{id}")
+    @Operation(summary = "Buscar Tienda", description = "Buscar tienda por id")
+    public TiendaDTO.Response buscarTienda(@PathVariable int id) {
+
+        return tiendaService.buscarPorId(id);
+    }
+
+    // AGREGAR
+    @PostMapping
+    @Operation(summary = "Registrar Tienda", description = "Registrar nueva tienda")
+    public TiendaDTO.Response agregarTienda(
+            @RequestBody TiendaDTO.Request request) {
+
+        return tiendaService.guardar(request);
+    }
+
+    // ACTUALIZAR
+    @PutMapping("{id}")
+    @Operation(summary = "Actualizar Tienda", description = "Actualizar tienda existente")
+    public TiendaDTO.Response actualizarTienda(
+            @PathVariable int id,
+            @RequestBody TiendaDTO.Request request) {
+
+        return tiendaService.actualizar(id, request);
+    }
+
+    // ELIMINAR
+    @DeleteMapping("{id}")
+    @Operation(summary = "Eliminar Tienda", description = "Eliminar tienda por id")
+    public String eliminarTienda(@PathVariable int id) {
+
+        tiendaService.eliminar(id);
+
+        return "Tienda eliminada correctamente";
+    }
 }

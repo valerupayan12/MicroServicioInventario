@@ -1,4 +1,4 @@
-package com.example.MicroInventario.model;
+package com.example.MicroInventario.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,12 +18,16 @@ import lombok.NoArgsConstructor;
 public class Tienda {
     @Id
     private int id_tienda;
+
     @Column(name="nombre", nullable=false)
     private String nombre;
+
     @Column(name="direccion", nullable=false)
     private String direccion;
+
     @Column(name="id_comuna", nullable=false)
     private int id_comuna;
+    
     @Column(name="id_region", nullable=false)
     private int id_region;
 }
