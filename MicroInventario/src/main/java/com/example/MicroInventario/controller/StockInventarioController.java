@@ -3,69 +3,67 @@ package com.example.MicroInventario.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.example.MicroInventario.model.StockInventario;
+import com.example.MicroInventario.dto.StockInventarioDTO;
 import com.example.MicroInventario.service.StockInventarioService;
 
-import jakarta.validation.Valid;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/v1/stockinventarios")
-
+@RequestMapping("api/v1/stock")
+@Tag(name = "Stock Inventario", description = "Operaciones relacionadas con stock")
+@RequiredArgsConstructor
 public class StockInventarioController {
+
     @Autowired
     private StockInventarioService stockInventarioService;
 
+    // LISTAR
     @GetMapping
-    public List<StockInventario> listarStockInventarios() {
+    @Operation(summary = "Obtener Stock", description = "Obtiene lista de stock")
+    public List<StockInventarioDTO.Response> listarStock() {
 
-        return stockInventarioService.getStockInventarios();
+        return stockInventarioService.listar();
     }
 
-    // agregar
+    // BUSCAR POR ID
+    @GetMapping("{id}")
+    @Operation(summary = "Buscar Stock", description = "Buscar stock por id")
+    public StockInventarioDTO.Response buscarStock(
+            @PathVariable int id) {
+
+        return stockInventarioService.buscarPorId(id);
+    }
+
+    // AGREGAR
     @PostMapping
-    public StockInventario agregarStockInventario(
-            @Valid @RequestBody StockInventario stockInventario) {
+    @Operation(summary = "Registrar Stock", description = "Registrar nuevo stock")
+    public StockInventarioDTO.Response agregarStock(
+            @RequestBody StockInventarioDTO.Request request) {
 
-        return stockInventarioService.saveStockInventario(stockInventario);
+        return stockInventarioService.guardar(request);
     }
 
-    // buscar
-    @GetMapping("/{id_stock_inventario}")
-    public StockInventario buscarStockInventario(
-            @PathVariable int id_stock_inventario) {
+    // ACTUALIZAR
+    @PutMapping("{id}")
+    @Operation(summary = "Actualizar Stock", description = "Actualizar stock existente")
+    public StockInventarioDTO.Response actualizarStock(
+            @PathVariable int id,
+            @RequestBody StockInventarioDTO.Request request) {
 
-        return stockInventarioService.getStockInventario(id_stock_inventario);
+        return stockInventarioService.actualizar(id, request);
     }
 
-    // actualizar
-    @PutMapping("/{id_stock_inventario}")
-    public int actualizarStockInventario(
-            @PathVariable int id_stock_inventario,
-            @Valid @RequestBody StockInventario stockInventario) {
+    // ELIMINAR
+    @DeleteMapping("{id}")
+    @Operation(summary = "Eliminar Stock", description = "Eliminar stock por id")
+    public String eliminarStock(@PathVariable int id) {
 
-        return stockInventarioService.updateStockInventario(stockInventario);
+        stockInventarioService.eliminar(id);
+
+        return "Stock eliminado correctamente";
     }
-
-    // eliminar
-    @DeleteMapping("/{id_stock_inventario}")
-    public String eliminarStockInventario(
-            @PathVariable int id_stock_inventario) {
-
-        if (stockInventarioService.deleteStockInventario(id_stock_inventario) == 1) {
-
-            return "StockInventario eliminado correctamente";
-        }
-
-        return "Error al eliminar el stock_inventario";
-    }
-
 }

@@ -1,4 +1,4 @@
-package com.example.MicroInventario.model;
+package com.example.MicroInventario.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
