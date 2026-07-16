@@ -108,3 +108,66 @@ Consider defining a bean of type 'com.example.MicroInventario.service.StockInven
 2026-06-09 13:31:44 [http-nio-8084-exec-9] WARN  org.hibernate.orm.jdbc.error - HHH000247: ErrorCode: 1048, SQLState: 23000
 2026-06-09 13:31:44 [http-nio-8084-exec-9] WARN  org.hibernate.orm.jdbc.error - Column 'id_producto' cannot be null
 2026-06-09 13:31:44 [http-nio-8084-exec-9] ERROR c.e.M.config.GlobalExceptionHandler - [ms-producto] Error: could not execute statement [Column 'id_producto' cannot be null] [insert into stockinventario (cantidad,estado,id_producto,stock_min,id_tienda,id_stock) values (?,?,?,?,?,?)]; SQL [insert into stockinventario (cantidad,estado,id_producto,stock_min,id_tienda,id_stock) values (?,?,?,?,?,?)]; constraint [id_producto]
+2026-07-15 20:59:40 [main] INFO  c.e.M.MicroInventarioApplication - Starting MicroInventarioApplication using Java 21.0.11 with PID 22340 (C:\Users\tokyotech\Documents\GitHub\MicroServicioInventario\MicroInventario\target\classes started by tokyotech in C:\Users\tokyotech\Documents\GitHub\MicroServicioInventario)
+2026-07-15 20:59:40 [main] INFO  c.e.M.MicroInventarioApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-15 20:59:41 [main] INFO  c.e.M.MicroInventarioApplication - Starting MicroInventarioApplication using Java 21.0.11 with PID 17292 (C:\Users\tokyotech\Documents\GitHub\MicroServicioInventario\MicroInventario\target\classes started by tokyotech in C:\Users\tokyotech\Documents\GitHub\MicroServicioInventario)
+2026-07-15 20:59:41 [main] INFO  c.e.M.MicroInventarioApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-15 20:59:42 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-15 20:59:42 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-15 20:59:42 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 201 ms. Found 4 JPA repository interfaces.
+2026-07-15 20:59:42 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 198 ms. Found 4 JPA repository interfaces.
+2026-07-15 20:59:43 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=a19b79bb-76e6-37eb-bcd3-5ebaa753f2c6
+2026-07-15 20:59:43 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=a19b79bb-76e6-37eb-bcd3-5ebaa753f2c6
+2026-07-15 20:59:43 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8084 (http)
+2026-07-15 20:59:43 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-15 20:59:43 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-07-15 20:59:43 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8084 (http)
+2026-07-15 20:59:44 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-15 20:59:44 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-07-15 20:59:44 [main] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 3101 ms
+2026-07-15 20:59:44 [main] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 2993 ms
+2026-07-15 20:59:44 [main] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-07-15 20:59:44 [main] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-07-15 20:59:44 [main] INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-07-15 20:59:44 [main] INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-07-15 20:59:45 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-15 20:59:45 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-07-15 20:59:45 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-15 20:59:45 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-07-15 20:59:45 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@41120e48
+2026-07-15 20:59:45 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-07-15 20:59:45 [main] WARN  org.hibernate.orm.core - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly.The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2026-07-15 20:59:45 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@165a5979
+2026-07-15 20:59:45 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-07-15 20:59:45 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-07-15 20:59:45 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/db_ecomarket]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 5.5.5
+	Default catalog/schema: db_ecomarket/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-15 20:59:45 [main] WARN  org.hibernate.orm.core - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly.The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2026-07-15 20:59:45 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-07-15 20:59:45 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/db_ecomarket]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 5.5.5
+	Default catalog/schema: db_ecomarket/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-15 20:59:46 [main] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-15 20:59:46 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-15 20:59:46 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-07-15 20:59:47 [main] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-15 20:59:47 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
